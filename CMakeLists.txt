@@ -7,7 +7,7 @@ project(ChrestCompilerFlags VERSION 1.0)
 add_library(chrestCompilerFlags INTERFACE)
 
 # allow the options to be turned off
-option(enforceChrestCompilerFlags "set to ON to enforce compiler warnings flags" OFF)
+option(enforceChrestCompilerFlags "set to ON to enforce compiler warnings flags" ON)
 if (enforceChrestCompilerFlags)
     target_compile_options(chrestCompilerFlags INTERFACE $<$<COMPILE_LANGUAGE:C>:$<$<OR:$<C_COMPILER_ID:Clang>,$<C_COMPILER_ID:AppleClang>,$<C_COMPILER_ID:GNU>>: -Wall -Wextra -Wwrite-strings -Wno-strict-aliasing -Wno-unknown-pragmas -Wsign-compare -fstack-protector -fno-stack-check >>>)
     target_compile_options(chrestCompilerFlags INTERFACE $<$<COMPILE_LANGUAGE:CXX>:$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>: -Wall -Wextra -Wwrite-strings -Wno-strict-aliasing -Wno-unknown-pragmas -Wsign-compare -fstack-protector -fno-stack-check >>>)
